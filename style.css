@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Caveat", serif;
+    overflow: hidden;
+}
+
+h1{
+    text-align: center;
+    font-size: 75px;
+}
