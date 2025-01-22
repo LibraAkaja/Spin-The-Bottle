@@ -6,12 +6,40 @@
     <title>Spin The Bottle without Bottle</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Grey+Qo&family=Orbitron&family=Roboto:ital,wght@0,100..900;1,100..900&family=Spicy+Rice&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Grey+Qo&family=Orbitron&family=Roboto:ital,wght@0,100..900;1,100..900&family=Spicy+Rice&display=swap" rel="stylesheet">
 </head>
 <body>
     <br>
-    <h1>Spin The Wheel</h1>
+    <h1>Spin The Bottle</h1>
+    <h2>But Wait, There's No Bottle!</h2>
+    <br>
+    <h3>Enter the number of your gang members: &nbsp;<input type="number" name="members" value="0" min="2"></h3>
+    <p>Choose: 
+        <br>
+        <label>
+            Numbers <input type="checkbox" name="ans" value="num" onclick="onNumbers()"> 
+        </label>
+        &nbsp;    
+        <label>
+            Names <input type="checkbox" name="ans" value="name" onclick="onNames()">
+        </label>
+        <div id="hidbox">
+            <div id="hidbox1">Assign a number to each of your friends!<br>Have you assigned?&nbsp&nbsp<input type="checkbox" name="set4action1"></div>
+            <div id="hidbox2">Enter the names:<br>
+                <div id="nameContainer">
+                </div><br>
+                Are you done?&nbsp&nbsp<input type="checkbox" name="set4action2" onclick="setNames()">
+            </div>
+        </div>
+        <br>
+        <div id="msg1"></div>
+    </p>
+    <div id="container">
+    </div><br>
+    <div class="goContainer">
+        <div class="go" id="go" onclick="colorDivs()">Let's Go!</div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

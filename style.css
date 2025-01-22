@@ -2,10 +2,133 @@
     padding: 0;
     margin: 0;
     font-family: "Caveat", serif;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+body{
+    height: 100vh;
+    margin: 10px;
+    background: rgb(39, 39, 39);
+    color: white;
 }
 
 h1{
-    text-align: center;
     font-size: 50px;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+#msg1{
+    color: red;
+    text-align: center;
+}
+
+input{
+    cursor: pointer;
+}
+
+input[type="number"]{
+    width: 5ch;
+    border: 1px solid grey;
+    background: wheat;
+    border-radius: 5px;
+    outline: none;
+    padding: 2px;
+    cursor: text;
+}
+
+#hidbox{
+    border: 1px solid green;
+}
+
+#hidbox1{
+    border: 1px solid black;
+    visibility: hidden;
+    z-index: -1;
+}
+
+#hidbox2{
+    border: 1px solid red;
+    visibility: hidden;
+    z-index: -2;
+    position: absolute;
+    top: 36%;
+    width: 100vw;
+    margin-left: 0;
+}
+
+#nameContainer{
+    border: 1px solid purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#names{
+    border: 1px solid black;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 15px;
+    column-gap: 15px;
+}
+
+input[type="text"]{
+    flex-grow: 1.1;
+    outline: none;
+    padding: 2px; 
+}
+
+input[type="checkbox"]{
+    accent-color: yellowgreen;
+}
+
+#container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    gap: 5vw;
+}
+
+.goContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 45vh;
+}
+
+.go{
+    width: 10ch;
+    aspect-ratio: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,crimson, blue);
+    border: 2px solid black;
+    border-radius: 15px;
+    transform: scale(0.9);
+}
+
+.go:hover, .go:active{
+    transform: scale(1);
+}
+
+.card{
+    height: 10ch;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid grey;
+    color: white;
+    background: rgb(82, 77, 77);
 }
