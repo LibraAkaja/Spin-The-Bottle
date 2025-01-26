@@ -119,6 +119,7 @@ input[type="checkbox"]{
     border: 2px solid black;
     border-radius: 15px;
     transform: scale(0.9);
+    cursor: pointer;
 }
 
 .go:hover, .go:active{
