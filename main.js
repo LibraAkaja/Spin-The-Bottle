@@ -108,7 +108,12 @@ function getNames(num){
     for(let i = 0; i < num; i+= 1){
         newDiv.appendChild(newElements[i]);
     }
-    document.querySelector('input[name="set4action2"]').addEventListener("click",getRandomOrder());
+    
+    document.querySelector("#go").addEventListener("click",()=>{
+        if(c == num){
+            getRandomOrder();
+        }
+    });
 }
 
 document.querySelector('input[name="set4action2"]').addEventListener("click",()=>{
@@ -119,7 +124,6 @@ document.querySelector('input[name="set4action2"]').addEventListener("click",()=
             if(mutation.type === "childList"){
                 mutation.addedNodes.forEach((node) => {
                     if(node.nodeType === 1 && knownIDs.includes(node.id)){
-                        alert('c = '+c);
                         if(c === num){
                             observer.disconnect();
                         }
@@ -180,8 +184,6 @@ function createDivs(){
     });
 
     alert("After: "+ values);
-
-    // document.querySelector("#go").addEventListener("click", getAPerson());
 }
 
 //Color animation
@@ -251,14 +253,11 @@ function getAPerson(num){
     alert(order);
     alert(people);
     if(c == num){
-        // getRandomOrder();
         c = 0;
     }
     document.querySelector("#namae"+order[c]).style.background = "yellowgreen";
     //getRandomAnimation();
     c += 1;
 }
-
-
 
 
