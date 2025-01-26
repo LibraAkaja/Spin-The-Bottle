@@ -79,9 +79,13 @@ input[type="number"]{
 }
 
 input[type="text"]{
+    min-width: 100px;
     flex-grow: 1.1;
     outline: none;
     padding: 2px; 
+    border: none;
+    background: white;
+    font-size: 15px;
 }
 
 input[type="checkbox"]{

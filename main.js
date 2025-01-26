@@ -101,6 +101,7 @@ function getNames(num){
     for(let i = 0; i < num; i+= 1){
         newElements[i] = document.createElement("input");
         newElements[i].setAttribute("type","text");
+        newElements[i].setAttribute("class","names");
         newElements[i].setAttribute("id","name"+ (i+1));
         newElements[i].setAttribute("placeholder","name"+ (i+1));   
     }
@@ -250,7 +251,7 @@ function getAPerson(num){
     alert(order);
     alert(people);
     if(c == num){
-        getRandomOrder();
+        // getRandomOrder();
         c = 0;
     }
     document.querySelector("#namae"+order[c]).style.background = "yellowgreen";
