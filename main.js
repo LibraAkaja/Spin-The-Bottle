@@ -12,6 +12,12 @@ let intervalID = null;
 
 let order = [];
 
+let c = 0;
+
+function getNum(){
+    return document.querySelector('input[name="members"]').value;
+}
+
 //Animation for Numbers as Choice
 function choiceNumEffects(){
     //Display required message
@@ -57,7 +63,7 @@ function removeNames(){
 function onNumbers(){
     const choiceNum = document.querySelector('input[value="num"]');
     const choiceName = document.querySelector('input[value="name"]');
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     if(choiceNum.checked){
         choiceNumEffects();
         removeNames();
@@ -73,7 +79,7 @@ function onNumbers(){
 function onNames(){
     const choiceName = document.querySelector('input[value="name"]');
     const choiceNum = document.querySelector('input[value="num"]');
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     if(choiceName.checked == true){
         removeNames();
         choiceNamEffects();
@@ -104,10 +110,31 @@ function getNames(num){
     document.querySelector('input[name="set4action2"]').addEventListener("click",getRandomOrder());
 }
 
+document.querySelector('input[name="set4action2"]').addEventListener("click",()=>{
+    const num = getNum();
+    const knownIDs = Array.from({length: num},(_, i) => "namae" + (i + 1));
+    const observer = new MutationObserver((mutationList) => {
+        mutationList.forEach((mutation) => {
+            if(mutation.type === "childList"){
+                mutation.addedNodes.forEach((node) => {
+                    if(node.nodeType === 1 && knownIDs.includes(node.id)){
+                        alert('c = '+c);
+                        if(c === num){
+                            observer.disconnect();
+                        }
+                        c += 1;
+                    }
+                });
+            }
+        });
+    });
+    observer.observe(divContainer, {childList: true, subtree: true});
+});
+
 //Get names as input by user inside script
 let names = [];
 function setNames(){
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     if(document.querySelector('input[name="set4action2"]').checked){
         for(let i = 0; i < num; i += 1){
             names[i] = document.querySelector("#name"+(i+1)).value; 
@@ -118,13 +145,13 @@ function setNames(){
         hidbox2.style.zIndex = "-2";
     },1000);
     setTimeout(() => {
-        createDivs();  
+        createDivs(); 
     },2000);
 }
 
 //Circular divs for storing names
 function createDivs(){
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     let newDivs = [num];
     for(let i = 0; i < num; i += 1){
         newDivs[i] = document.createElement("div");
@@ -151,6 +178,9 @@ function createDivs(){
         d.innerHTML = values[index];
     });
 
+    alert("After: "+ values);
+
+    // document.querySelector("#go").addEventListener("click", getAPerson());
 }
 
 //Color animation
@@ -158,7 +188,7 @@ function colorDivs(){
     if(intervalID){
         clearInterval(intervalID);
     }
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     const divs = Array.from(document.querySelectorAll(".card"));
     const colors = [
         "#FF00FF", // Neon Pink
@@ -192,6 +222,7 @@ function colorDivs(){
         divs.forEach((d) => {
             d.style.background = "rgb(82, 77, 77)"
         });
+        getAPerson(num);
     },5000);
 }
 
@@ -202,37 +233,31 @@ function getRandomInt(min,max){
 
 //It gives random order of people beforehand
 function getRandomOrder(){
-    const num = document.querySelector('input[name="members"]').value;
+    const num = getNum();
     
-    order = Array.from({length : num}, (_, index) => index);
+    order = Array.from({length : num}, (_, index) => index + 1);
 
     // Using the Fisher-Yates algorithm to swap the numbers in order
     for(let i = order.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i+1));
         [order[i],order[j]] = [order[j],order[i]];
     }
-    sessionStorage.setItem("count",0);
-    alert(order);
 }
 
+function getAPerson(num){
+    const divs = document.querySelectorAll(".card");
+    const people = Array.from(divs, div => div.textContent);
+    alert(order);
+    alert(people);
+    if(c == num){
+        getRandomOrder();
+        c = 0;
+    }
+    document.querySelector("#namae"+order[c]).style.background = "yellowgreen";
+    //getRandomAnimation();
+    c += 1;
+}
 
-//Lyang function to be fixed tomorrow
-document.querySelector("#go").addEventListener("click",()=>{
-    const c = parseInt(sessionStorage.getItem("count"));
-    setTimeout(()=>{
-        if(order[c] && c < order.length) {
-            document.querySelector("#namae"+order[c]).style.background = "green";
-            sessionStorage.setItem("count",parseInt(c + 1));    
-        }
-        else if(!order[c]){
-            alert("Null");
-        }
-        else if(c >= order.length){
-            alert("New Session")
-            getRandomOrder();
-        }
-    },5000);
-});
 
 
 
