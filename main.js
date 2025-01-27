@@ -204,8 +204,6 @@ function createDivs(event){
     divs.forEach((d,index) => {
         d.innerHTML = values[index];
     });
-
-    alert("People: " + values);
 }
 
 //Color animation
@@ -272,12 +270,10 @@ function getRandomOrder(){
 function getAPerson(num){
     const divs = document.querySelectorAll(".card");
     const people = Array.from(divs, div => div.textContent);
-    alert(c);
     if(c == num){
         getRandomOrder();
         c = 0;
     }
-    alert(order);
     document.querySelector("#namae"+order[c]).style.background = "yellowgreen";
     //getRandomAnimation();
     c += 1;
