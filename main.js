@@ -10,6 +10,8 @@ const container = document.querySelector("#nameContainer");
 
 const divContainer = document.querySelector("#container");
 
+const dibba = document.querySelector("#goContainer");
+
 let intervalID = null;
 
 let order = [];
@@ -70,12 +72,14 @@ function onNumbers(){
         choiceNumEffects();
         removeNames();
         getRandomOrder();
+        removeBtn();
     }
     else{
         choiceName.checked = true;
         choiceNamEffects();
         getNames(num);
     }
+    removeBtn();
 }
 
 //If the choice is using names
@@ -88,12 +92,14 @@ function onNames(){
         choiceNamEffects();
         getNames(num);
         getRandomOrder();
+        removeBtn();
     }
     else{
         choiceNum.checked = true;
         choiceNumEffects();
         removeNames();
-    } 
+    }
+    removeBtn();
 }
 
 //Ask user inputs for names
@@ -204,6 +210,23 @@ function createDivs(event){
     divs.forEach((d,index) => {
         d.innerHTML = values[index];
     });
+    
+    addButton();
+}
+
+function addButton(){
+    const btn = document.createElement("div");
+    btn.setAttribute("class", "go");
+    btn.setAttribute("id", "go");
+    btn.innerHTML = "Let's Go";
+    dibba.appendChild(btn);
+    btn.addEventListener("click",colorDivs);
+}
+
+function removeBtn(){
+    if(dibba.hasChildNodes){
+        dibba.removeChild(document.querySelector("#go"));
+    }
 }
 
 //Color animation
