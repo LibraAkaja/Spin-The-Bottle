@@ -1,3 +1,5 @@
+"use strict";
+
 //The divs with hidden msg for choice of using Numbers
 const hidbox1 = document.querySelector("#hidbox1");
 const hidbox2 = document.querySelector("#hidbox2");
@@ -67,6 +69,7 @@ function onNumbers(){
     if(choiceNum.checked){
         choiceNumEffects();
         removeNames();
+        getRandomOrder();
     }
     else{
         choiceName.checked = true;
@@ -84,12 +87,13 @@ function onNames(){
         removeNames();
         choiceNamEffects();
         getNames(num);
+        getRandomOrder();
     }
     else{
         choiceNum.checked = true;
         choiceNumEffects();
         removeNames();
-    }
+    } 
 }
 
 //Ask user inputs for names
@@ -108,15 +112,12 @@ function getNames(num){
     for(let i = 0; i < num; i+= 1){
         newDiv.appendChild(newElements[i]);
     }
-    
-    document.querySelector("#go").addEventListener("click",()=>{
-        if(c == num){
-            getRandomOrder();
-        }
-    });
 }
 
-document.querySelector('input[name="set4action2"]').addEventListener("click",()=>{
+document.querySelector('input[name="set4action2"]').addEventListener("click",observe());
+document.querySelector('input[name="set4action1"]').addEventListener("click",observe());
+
+function observe(){
     const num = getNum();
     const knownIDs = Array.from({length: num},(_, i) => "namae" + (i + 1));
     const observer = new MutationObserver((mutationList) => {
@@ -134,11 +135,11 @@ document.querySelector('input[name="set4action2"]').addEventListener("click",()=
         });
     });
     observer.observe(divContainer, {childList: true, subtree: true});
-});
+}
 
 //Get names as input by user inside script
 let names = [];
-function setNames(){
+function setNames(event){
     const num = getNum();
     if(document.querySelector('input[name="set4action2"]').checked){
         for(let i = 0; i < num; i += 1){
@@ -150,22 +151,43 @@ function setNames(){
         hidbox2.style.zIndex = "-2";
     },1000);
     setTimeout(() => {
-        createDivs(); 
+        createDivs(event); 
+    },2000);
+}
+
+function setNumbers(event){
+    setTimeout(() => {
+        hidbox1.style.visibility = "hidden";
+        hidbox1.style.zIndex = "-2";
+    },1000);
+    setTimeout(() => {
+        createDivs(event);
     },2000);
 }
 
 //Circular divs for storing names
-function createDivs(){
+function createDivs(event){
     const num = getNum();
     let newDivs = [num];
-    for(let i = 0; i < num; i += 1){
-        newDivs[i] = document.createElement("div");
-        newDivs[i].setAttribute("class","card");
-        newDivs[i].setAttribute("id","namae"+(i+1));
-        newDivs[i].innerHTML = names[i];
-        divContainer.appendChild(newDivs[i]);
+    if(event.target.id == "s2"){
+        for(let i = 0; i < num; i += 1){
+            newDivs[i] = document.createElement("div");
+            newDivs[i].setAttribute("class","card");
+            newDivs[i].setAttribute("id","namae"+(i+1));
+            newDivs[i].innerHTML = names[i];
+            divContainer.appendChild(newDivs[i]);
+        }
     }
-
+    else if(event.target.id == "s1"){
+        for(let i = 0; i < num; i += 1){
+            newDivs[i] = document.createElement("div");
+            newDivs[i].setAttribute("class","card");
+            newDivs[i].setAttribute("id","namae"+(i+1));
+            newDivs[i].innerHTML = i+1;
+            divContainer.appendChild(newDivs[i]);
+        }
+    }
+    
     //Swapping the div values
 
     // Extracting divs values from each name divs 
@@ -183,7 +205,7 @@ function createDivs(){
         d.innerHTML = values[index];
     });
 
-    alert("After: "+ values);
+    alert("People: " + values);
 }
 
 //Color animation
@@ -194,21 +216,21 @@ function colorDivs(){
     const num = getNum();
     const divs = Array.from(document.querySelectorAll(".card"));
     const colors = [
-        "#FF00FF", // Neon Pink
-        "#00FFFF", // Neon Cyan
-        "#FF4500", // Neon Orange
-        "#ADFF2F", // Neon Green
-        "#FFFF00", // Neon Yellow
-        "#8A2BE2", // Neon Purple
-        "#FF1493", // Deep Pink
-        "#32CD32", // Lime Green
-        "#00FF7F", // Spring Green
-        "#00CED1", // Dark Turquoise
-        "#FF69B4", // Hot Pink
-        "#FFD700", // Gold
-        "#7FFF00", // Chartreuse
-        "#DC143C", // Crimson
-        "#1E90FF"  // Dodger Blue
+        "#FF00FF", 
+        "#00FFFF", 
+        "#FF4500", 
+        "#ADFF2F", 
+        "#FFFF00", 
+        "#8A2BE2", 
+        "#FF1493", 
+        "#32CD32", 
+        "#00FF7F", 
+        "#00CED1", 
+        "#FF69B4", 
+        "#FFD700", 
+        "#7FFF00", 
+        "#DC143C", 
+        "#1E90FF"  
     ];
     let colorIndex = 0;
     divs.forEach((d,i) => {
@@ -250,11 +272,12 @@ function getRandomOrder(){
 function getAPerson(num){
     const divs = document.querySelectorAll(".card");
     const people = Array.from(divs, div => div.textContent);
-    alert(order);
-    alert(people);
+    alert(c);
     if(c == num){
+        getRandomOrder();
         c = 0;
     }
+    alert(order);
     document.querySelector("#namae"+order[c]).style.background = "yellowgreen";
     //getRandomAnimation();
     c += 1;
