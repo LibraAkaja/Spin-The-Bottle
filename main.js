@@ -72,12 +72,12 @@ function onNumbers(){
         choiceNumEffects();
         removeNames();
         getRandomOrder();
-        removeBtn();
     }
     else{
         choiceName.checked = true;
         choiceNamEffects();
         getNames(num);
+        removeDivs();
     }
     removeBtn();
 }
@@ -92,12 +92,12 @@ function onNames(){
         choiceNamEffects();
         getNames(num);
         getRandomOrder();
-        removeBtn();
     }
     else{
         choiceNum.checked = true;
         choiceNumEffects();
         removeNames();
+        removeDivs();
     }
     removeBtn();
 }
@@ -214,6 +214,7 @@ function createDivs(event){
     addButton();
 }
 
+//Function to add the button
 function addButton(){
     const btn = document.createElement("div");
     btn.setAttribute("class", "go");
@@ -223,10 +224,16 @@ function addButton(){
     btn.addEventListener("click",colorDivs);
 }
 
+//Function to remove the button
 function removeBtn(){
-    if(dibba.hasChildNodes){
+    if(dibba.querySelector("div")){
         dibba.removeChild(document.querySelector("#go"));
     }
+}
+
+function removeDivs(){
+    const divs = document.querySelectorAll(".card");
+    divs.forEach(div => div.remove());
 }
 
 //Color animation
