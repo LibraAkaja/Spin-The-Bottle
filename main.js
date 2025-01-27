@@ -80,6 +80,7 @@ function onNumbers(){
         removeDivs();
     }
     removeBtn();
+    c = 0;
 }
 
 //If the choice is using names
@@ -100,6 +101,7 @@ function onNames(){
         removeDivs();
     }
     removeBtn();
+    c = 0;
 }
 
 //Ask user inputs for names
