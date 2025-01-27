@@ -120,9 +120,11 @@ function getNames(num){
     }
 }
 
+//Add event listener to the checkboxes that appear to confirm the names or the numbers assigned
 document.querySelector('input[name="set4action2"]').addEventListener("click",observe());
 document.querySelector('input[name="set4action1"]').addEventListener("click",observe());
 
+//Observes the changes in the webpage
 function observe(){
     const num = getNum();
     const knownIDs = Array.from({length: num},(_, i) => "namae" + (i + 1));
@@ -161,6 +163,7 @@ function setNames(event){
     },2000);
 }
 
+//Clears previous message that appeared when the choice was numbers
 function setNumbers(event){
     setTimeout(() => {
         hidbox1.style.visibility = "hidden";
@@ -231,6 +234,7 @@ function removeBtn(){
     }
 }
 
+//Function to remove the pervious circular divs
 function removeDivs(){
     const divs = document.querySelectorAll(".card");
     divs.forEach(div => div.remove());
@@ -297,6 +301,7 @@ function getRandomOrder(){
     }
 }
 
+//Fucntion to get a person according to the random order
 function getAPerson(num){
     const divs = document.querySelectorAll(".card");
     const people = Array.from(divs, div => div.textContent);
