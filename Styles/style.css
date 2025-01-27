@@ -98,6 +98,7 @@ input[type="checkbox"]{
     flex-direction: row;
     flex-wrap: wrap-reverse;
     gap: 5vw;
+    height: fit-content;
 }
 
 .goContainer{
@@ -106,7 +107,8 @@ input[type="checkbox"]{
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 45vh;
+    top: 30px;
+    border: 1px solid yellowgreen;
 }
 
 .go{
