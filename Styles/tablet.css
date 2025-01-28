@@ -1,0 +1,29 @@
+@media only screen and (min-width: 426px){
+    h1{
+        transform: scale(1.25);
+    }
+    h2{
+        transform: scale(1.15);
+    }
+    h3{
+        transform: scale(1.25);
+        position: relative;
+        left: 12.5%;
+    }
+    p{
+        font-size: 25px;
+    }
+    #hidbox1,#hidbox2{
+        font-size: 23px;
+    }
+    input[type="text"]{
+        min-width: 200px;
+        font-size: 20px;
+    }
+    .card{
+        font-size: 20px;
+    }
+    #goContainer{
+        transform: scale(1.25);
+    }
+}
