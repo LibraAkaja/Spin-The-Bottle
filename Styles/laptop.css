@@ -1,0 +1,18 @@
+@media only screen and (min-width: 769px){
+    body{
+        padding-left: 80px;
+    }
+    h1{
+        transform: scale(1.5);
+    }
+    h2{
+        transform: scale(1.35);
+    }
+    h3{
+        transform: scale(1.5);
+        left: 25%;
+    }
+    #hidbox1, #hidbox2{
+        font-size: 25px;
+    }
+}
