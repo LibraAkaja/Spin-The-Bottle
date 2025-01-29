@@ -15,4 +15,11 @@
     #hidbox1, #hidbox2{
         font-size: 25px;
     }
+    #hidbox1{
+        position: absolute;
+        top: 39%;
+    }
+    #goContainer{
+        margin-top: 100px;
+    }
 }

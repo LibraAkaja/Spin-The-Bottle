@@ -16,6 +16,9 @@
     #hidbox1,#hidbox2{
         font-size: 23px;
     }
+    #hidbox2{
+        top: 39%;
+    }
     input[type="text"]{
         min-width: 200px;
         font-size: 20px;
@@ -23,7 +26,11 @@
     .card{
         font-size: 20px;
     }
+    #container{
+        margin: 0;
+    }
     #goContainer{
         transform: scale(1.25);
+        margin-top: 100px;
     }
 }

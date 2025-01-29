@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     font-family: "Caveat", serif;
-    overflow-x: hidden;
 }
 
 body{
@@ -10,6 +9,11 @@ body{
     margin: 10px;
     background: rgb(39, 39, 39);
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: visible;
+    overflow-x: hidden;
 }
 
 h1{
@@ -17,11 +21,6 @@ h1{
 }
 
 h1,h2{
-    text-align: center;
-}
-
-#msg1{
-    color: red;
     text-align: center;
 }
 
@@ -39,10 +38,6 @@ input[type="number"]{
     cursor: text;
 }
 
-/* #hidbox{
-    border: 1px solid green;
-} */
-
 #hidbox1{
     visibility: hidden;
     z-index: -1;
@@ -52,7 +47,7 @@ input[type="number"]{
     visibility: hidden;
     z-index: -2;
     position: absolute;
-    top: 36%;
+    top: 39.5%;
     width: 100vw;
     margin-left: 0;
 }
@@ -94,7 +89,8 @@ input[type="checkbox"]{
     flex-direction: row;
     flex-wrap: wrap-reverse;
     gap: 5vw;
-    height: fit-content;
+    width: 99%;
+    margin-left: 2vw;
 }
 
 .goContainer{
@@ -102,8 +98,8 @@ input[type="checkbox"]{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 30px;
+    align-self: center;
+    margin-top: 50px;
 }
 
 .go{
@@ -133,4 +129,10 @@ input[type="checkbox"]{
     border: 2px solid grey;
     color: white;
     background: rgb(82, 77, 77);
+}
+
+@media only screen and (min-width: 321px){
+    #hidbox2{
+        top: 36%;
+    }
 }
