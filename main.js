@@ -150,6 +150,7 @@ function observe(){
 //Get names as input by user inside script
 let names = [];
 function setNames(event){
+    event.target.disabled = true;
     const num = getNum();
     if(document.querySelector('input[name="set4action2"]').checked){
         for(let i = 0; i < num; i += 1){
@@ -162,18 +163,19 @@ function setNames(event){
     },1000);
     setTimeout(() => {
         createDivs(event); 
-    },2000);
+    },1500);
 }
 
 //Clears previous message that appeared when the choice was numbers
 function setNumbers(event){
+    event.target.disabled = true;
     setTimeout(() => {
         hidbox1.style.visibility = "hidden";
         hidbox1.style.zIndex = "-2";
     },1000);
     setTimeout(() => {
         createDivs(event);
-    },2000);
+    },1500);
 }
 
 //Circular divs for storing names
