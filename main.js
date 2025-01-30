@@ -63,6 +63,12 @@ function removeNames(){
     }
 }
 
+//If only a number is set on the number input element, checking the first two checkboxes will be enabled
+document.querySelector('input[type="number"]').addEventListener("input",()=>{
+    document.querySelector('input[value="num"]').disabled = false;
+    document.querySelector('input[value="name"]').disabled = false;
+});
+
 //If the choice is using numbers
 function onNumbers(){
     const choiceNum = document.querySelector('input[value="num"]');
