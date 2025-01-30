@@ -29,6 +29,7 @@ git clone https://github.com/LibraAkaja/Spin-The-Bottle.git
 cd Spin-The-Bottle
 
 # Open index.html in a browser
+```
 
 ## 🖼 Screenshots
 ![Spin The Bottle Screenshot](screenshot.png)
