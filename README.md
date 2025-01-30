@@ -32,7 +32,7 @@ cd Spin-The-Bottle
 ```
 
 ## 🖼 Screenshots
-<img src="screenshot.png" width="350">  <img src="screenshot2.png" width="350">
+<img src="screenshot.png" width="350">&nbsp;&nbsp;&nbsp;&nbsp;<img src="screenshot2.png" width="350">
 
 ## 🛠 Technologies Used
 - 🎨 **HTML & CSS** - For the user interface and styling.
