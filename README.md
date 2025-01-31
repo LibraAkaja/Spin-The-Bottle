@@ -9,6 +9,12 @@ A simple and fun **party game** built with **HTML, CSS, and JavaScript**. Whethe
 - **Simple UI**: Clean and intuitive design for easy use.
 - **Playable on GitHub Pages**: No installation needed!
 
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
 ## 🎮 How to Play
 1. Enter the names or assign numbers to the players.
 2. Click the **Let's Go** button to start the game.
