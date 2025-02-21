@@ -131,6 +131,12 @@ input[type="checkbox"]{
     background: rgb(82, 77, 77);
 }
 
+h1,h2,h3,p{
+    background: linear-gradient(to left, #FE03EE, #0DF4FA);
+    background-clip: text;
+    color: transparent;
+}
+
 @media only screen and (min-width: 321px){
     #hidbox2{
         top: 36%;
