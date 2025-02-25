@@ -71,15 +71,20 @@ document.querySelector('input[type="number"]').addEventListener("change",()=>{
     cbox2.disabled = false;
     if(cbox1.checked){
         cbox1.checked = false;
+        hidbox1.style.visibility = "hidden";
+        hidbox1.style.zIndex = "-1";
         childBox1.checked = false;
         childBox1.disabled = false;
     }
     if(cbox2.checked){
         cbox2.checked = false;
+        hidbox2.style.visibility = "hidden";
+        hidbox2.style.zIndex = "-2";
         childBox2.checked = false;
         childBox2.disabled = false;
     }
     removeNames();
+    removeDivs();
     removeBtn();
 });
 
