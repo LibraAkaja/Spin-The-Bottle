@@ -4,8 +4,6 @@
 const hidbox1 = document.querySelector("#hidbox1");
 const hidbox2 = document.querySelector("#hidbox2");
 
-const hidbox = document.querySelector("#hidbox");
-
 const container = document.querySelector("#nameContainer");
 
 const divContainer = document.querySelector("#container");
@@ -64,9 +62,25 @@ function removeNames(){
 }
 
 //If only a number is set on the number input element, checking the first two checkboxes will be enabled
-document.querySelector('input[type="number"]').addEventListener("input",()=>{
-    document.querySelector('input[value="num"]').disabled = false;
-    document.querySelector('input[value="name"]').disabled = false;
+document.querySelector('input[type="number"]').addEventListener("change",()=>{
+    const cbox1 = document.querySelector('input[value="num"]');
+    const cbox2 = document.querySelector('input[value="name"]');
+    const childBox1 = document.querySelector(`input[name="set4action1"]`);
+    const childBox2 = document.querySelector(`input[name="set4action2"]`);
+    cbox1.disabled = false;
+    cbox2.disabled = false;
+    if(cbox1.checked){
+        cbox1.checked = false;
+        childBox1.checked = false;
+        childBox1.disabled = false;
+    }
+    if(cbox2.checked){
+        cbox2.checked = false;
+        childBox2.checked = false;
+        childBox2.disabled = false;
+    }
+    removeNames();
+    removeBtn();
 });
 
 //If the choice is using numbers
@@ -80,6 +94,7 @@ function onNumbers(){
         getRandomOrder();
     }
     else{
+        document.querySelector(`input[name="set4action1"]`).disabled = false;
         choiceName.checked = true;
         choiceNamEffects();
         getNames(num);
@@ -101,6 +116,7 @@ function onNames(){
         getRandomOrder();
     }
     else{
+        document.querySelector(`input[name="set4action2"]`).disabled = false;
         choiceNum.checked = true;
         choiceNumEffects();
         removeNames();
